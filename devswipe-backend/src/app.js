@@ -14,7 +14,7 @@ const http = require('http');
 require('dotenv').config()
 app.use("/payment/webhook", express.raw({ type: "application/json" }));
 app.use(cors({
-  origin: 'http://localhost:5173',  // Frontend URL
+  origin: 'https://swipefordevelopers.onrender.com',  // Frontend URL
   credentials: true,  // Allow cookies/credentials
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],  // Allow these methods
   allowedHeaders: ['Content-Type', 'Authorization'],  // Allow these headers
