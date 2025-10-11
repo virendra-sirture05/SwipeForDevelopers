@@ -5,6 +5,6 @@ export const createSocketConnection = () => {
   if (location.hostname === "localhost") {
     return io(BASE_URL);
   } else {
-    return io("https://swipefordevelopers.onrender.com", { path: "/api/socket.io" });
+    return io("https://swipefordevelopers.onrender.com");
   }
 };

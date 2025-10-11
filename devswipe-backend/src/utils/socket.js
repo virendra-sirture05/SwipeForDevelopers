@@ -13,7 +13,10 @@ const getSecretRoomId = (userId, targetUserId) => {
 const initializeSocket = (server) => {
   const io = socket(server, {
     cors: {
-      origin: "https://swipefordevelopers.onrender.com",
+      origin: [
+        "http://localhost:5173",
+        "https://swipefordevelopers.onrender.com",
+      ],
     },
   });
 
