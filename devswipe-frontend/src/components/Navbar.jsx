@@ -43,10 +43,17 @@ const Navbar = () => {
                 <img alt="Tailwind CSS Navbar component" src={user.photoUrl} />
               </div>
             </div>
-            
+
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-white rounded-lg shadow-xl mt-56 w-52 p-4 space-y-2 text-gray-800"
+              className="
+    menu menu-sm dropdown-content 
+    bg-white rounded-lg shadow-xl 
+    w-52 p-4 space-y-2 text-gray-800
+    mt-3 md:mt-56    /* 👈 Desktop par hi large margin */
+    right-0           /* 👈 Dropdown ko screen ke andar rakhta hai */
+    z-[999]           /* 👈 Overlap issue fix karta hai */
+  "
             >
               <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
                 <Link
@@ -77,8 +84,8 @@ const Navbar = () => {
               </li>
               <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
                 <Link
-                  className="flex justify-between items-center text-lg font-semibold"
                   to={"/premium"}
+                  className="flex justify-between items-center text-lg font-semibold"
                 >
                   Premium
                 </Link>
