@@ -38,19 +38,24 @@ const UserCard = ({ user }) => {
   return (
     <div className="flex justify-center items-center">
       <TinderCard
-        className="absolute w-full max-w-md h-auto"
+        className="absolute w-full max-w-xs sm:max-w-sm h-auto"
         key={_id}
         onSwipe={(dir) => handleSwipe(dir, _id)}
         preventSwipe={["up", "down"]}
-        swipeRequirement={0.5}  // Optional: Adjust swipe threshold
+        swipeRequirement={0.5}
       >
-        <div className="auth-modal card bg-base-300 w-96 shadow-xl transition-all duration-1000 ease-in-out">
-          {/* Increased duration to 1000ms for slower swipe */}
+        <div className="auth-modal card bg-base-300 w-11/12 max-w-xs sm:max-w-sm shadow-xl transition-all duration-1000 ease-in-out">
           <figure>
-            <img src={photoUrl} alt={firstName} className="rounded-t-xl" />
+            <img
+              src={photoUrl}
+              alt={firstName}
+              className="rounded-t-xl w-full h-40 sm:h-48 object-cover"
+            />
           </figure>
           <div className="card-body">
-            <h2 className="text-black text-3xl font-sans card-title">{firstName + " " + lastName}</h2>
+            <h2 className="text-black text-2xl sm:text-3xl font-sans card-title">
+              {firstName + " " + lastName}
+            </h2>
             <p>{About}</p>
             {age && gender && <p>{age + ", " + gender}</p>}
           </div>
