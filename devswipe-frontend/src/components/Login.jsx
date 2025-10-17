@@ -25,7 +25,6 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data));
-      console.log("user added");
       navigate("/");
     } catch (error) {
       setError(error?.response?.data || "something went wrong");
@@ -55,7 +54,7 @@ const Login = () => {
 
   return (
     <div className="a w-full h-[85vh]">
-      <div className="card bg-gradient-to-r bg-white w-96 shadow-lg mx-auto mt-12">
+      <div className="card bg-white w-80 lg:w-96 shadow-lg mx-auto mt-12">
         <div className="card-body">
           <h2 className="font-bold font-sans text-4xl text-center text-black">
             {isLoginForm ? "Login" : "sign up"}

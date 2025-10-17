@@ -5,6 +5,7 @@ import BASE_URL from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slice/userSlice";
 import EditProfileCard from "./EditProfileCard";
+import { Link } from "react-router-dom";
 
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
@@ -44,9 +45,10 @@ const EditProfile = ({ user }) => {
 
   return (
     <>
-      <div className="flex gap-10 absolute top-0 left-[30%] p-6">
+      <div className="flex flex-col gap-10 sm:absolute top-0 sm:flex-row sm:left-[30%] p-6">
         <div className="flex justify-center items-center">
           <div className="card bg-white w-full max-w-md shadow-lg rounded-xl p-4">
+            <Link to={'/'}><h2 className="cursor-pointer text-black absolute right-2">close</h2></Link>
             <h2 className="text-center text-2xl font-semibold text-gray-800 mb-4">Edit Profile</h2>
             
             <label className="w-full my-3">

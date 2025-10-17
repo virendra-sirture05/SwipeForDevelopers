@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-gradient-to-r from-pink-500 to-orange-500 text-white px-10 py-5">
+    <div className="navbar bg-gradient-to-r from-pink-500 to-orange-500 text-white sm:px-10 sm:py-5">
       <div className="flex-1">
         <Link to={"/"} className="btn btn-ghost text-3xl">
           <SiTinder />
@@ -46,7 +46,7 @@ const Navbar = () => {
             
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-white rounded-lg shadow-xl mt-32 w-52 p-4 space-y-2 text-gray-800"
+              className="menu menu-sm dropdown-content bg-white rounded-lg shadow-xl mt-56 w-52 p-4 space-y-2 text-gray-800"
             >
               <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
                 <Link
