@@ -48,7 +48,7 @@ const EditProfile = ({ user }) => {
       <div className="flex flex-col gap-10 sm:absolute top-0 sm:flex-row sm:left-[30%] p-6">
         <div className="flex justify-center items-center">
           <div className="card bg-white w-full max-w-md shadow-lg rounded-xl p-4">
-            <Link to={'/'}><h2 className="cursor-pointer text-black absolute right-2">close</h2></Link>
+            <Link to={'/'}><h2 className="cursor-pointer text-red-600 text-2xl font-bold p-2 absolute right-2">✕</h2></Link>
             <h2 className="text-center text-2xl font-semibold text-gray-800 mb-4">Edit Profile</h2>
             
             <label className="w-full my-3">

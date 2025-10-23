@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { SiTinder } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import { removeUser } from "../utils/slice/userSlice";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
+  const [isOpen, setIsOpen] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,66 +40,76 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-16 rounded-full">
+              <div
+                className="w-16 rounded-full"
+                onClick={() => setIsOpen(true)}
+              >
                 <img alt="Tailwind CSS Navbar component" src={user.photoUrl} />
               </div>
             </div>
 
-            <ul
-              tabIndex={0}
-              className="
-    menu menu-sm dropdown-content 
-    bg-white rounded-lg shadow-xl 
-    w-52 p-4 space-y-2 text-gray-800
-    mt-3 md:mt-56    /* 👈 Desktop par hi large margin */
-    right-0           /* 👈 Dropdown ko screen ke andar rakhta hai */
-    z-[999]           /* 👈 Overlap issue fix karta hai */
-  "
+            {/* 🔹 Right Sidebar (Slide Menu) */}
+            <div
+              className={`fixed z-50 top-0 right-0 h-full w-64 bg-white text-black p-6 transform transition-transform duration-300 ease-in-out ${
+                isOpen ? "translate-x-0" : "translate-x-full"
+              }`}
             >
-              <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
-                <Link
-                  to={"/profile"}
-                  className="flex justify-between items-center text-lg font-semibold"
+              {/* Close Button */}
+              <button
+                className="text-2xl mb-6 text-green-400"
+                onClick={() => setIsOpen(false)}
+              >
+                ✕
+              </button>
+
+              <ul className="flex flex-col gap-6 text-lg font-semibold">
+                <li
+                  className="cursor-pointer hover:bg-green-700/20 hover:shadow-[0_0_15px_2px_rgba(34,197,94,0.4)] rounded-xl px-4 py-2 transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
                 >
-                  Profile
-                  <span className="badge badge-pill bg-pink-500 text-white">
-                    New
-                  </span>
-                </Link>
-              </li>
-              <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
-                <Link
-                  to={"/connections"}
-                  className="flex justify-between items-center text-lg font-semibold"
+                  <Link
+                    to={"/profile"}
+                    className="flex justify-between items-center"
+                  >
+                    Profile
+                    <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                      New
+                    </span>
+                  </Link>
+                </li>
+
+                <li
+                  className="cursor-pointer hover:bg-green-700/20 hover:shadow-[0_0_15px_2px_rgba(34,197,94,0.4)] rounded-xl px-4 py-2 transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
                 >
-                  Connections
-                </Link>
-              </li>
-              <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
-                <Link
-                  to={"/requests"}
-                  className="flex justify-between items-center text-lg font-semibold"
+                  <Link to={"/connections"}>Connections</Link>
+                </li>
+
+                <li
+                  className="cursor-pointer hover:bg-green-700/20 hover:shadow-[0_0_15px_2px_rgba(34,197,94,0.4)] rounded-xl px-4 py-2 transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
                 >
-                  Requests
-                </Link>
-              </li>
-              <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
-                <Link
-                  to={"/premium"}
-                  className="flex justify-between items-center text-lg font-semibold"
+                  <Link to={"/requests"}>Requests</Link>
+                </li>
+
+                <li
+                  className="cursor-pointer hover:bg-green-700/20 hover:shadow-[0_0_15px_2px_rgba(34,197,94,0.4)] rounded-xl px-4 py-2 transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
                 >
-                  Premium
-                </Link>
-              </li>
-              <li className="hover:bg-pink-100 transition-all duration-200 rounded-md">
-                <a
-                  onClick={handleLogout}
-                  className="flex justify-between items-center text-lg font-semibold text-red-500"
+                  <Link to={"/premium"}>Premium</Link>
+                </li>
+
+                <li
+                  className="cursor-pointer hover:bg-red-700/20 hover:shadow-[0_0_15px_2px_rgba(239,68,68,0.4)] rounded-xl px-4 py-2 transition-all duration-300 text-red-400"
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleLogout();
+                  }}
                 >
                   Logout
-                </a>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
           </div>
         )}
       </div>
